@@ -3,8 +3,9 @@
     <div class="window">
       <div class="loading" v-if="loading">
         <div class="logo">
-          <img src="@/assets/images/logo.svg" alt="n.eko" />
-          <span><b>N</b>.EKO</span>
+          <span class="logo-brand">
+            <span class="ninja">NINJABR</span><span class="cloud">.CLOUD</span>
+          </span>
         </div>
         <div class="loader">
           <div class="bounce1"></div>
@@ -146,7 +147,7 @@
       this.loading = true
 
       try {
-        const res = await this.$http.get<string>('https://raw.githubusercontent.com/m1k1o/neko/master/README.md')
+        const res = await this.$http.get<string>('https://raw.githubusercontent.com/luccas/NINJACLOUD/master/README.md')
         const res2 = await this.$http.post('https://api.github.com/markdown', {
           text: res.data,
           mode: 'gfm',

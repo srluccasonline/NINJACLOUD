@@ -165,6 +165,41 @@
       display: none;
     }
   }
+
+  .logo-brand {
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    display: flex;
+    align-items: center;
+    
+    .ninja {
+      color: #ff8c00; /* Vibrant Orange */
+      text-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
+    }
+    
+    .cloud {
+      color: #e0e0e0; /* Metallic Silver */
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(
+        90deg, 
+        #9ea1a1 0%, 
+        #ffffff 50%, 
+        #9ea1a1 100%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% auto;
+      animation: shine 3s linear infinite;
+    }
+
+    @keyframes shine {
+      to {
+        background-position: 200% center;
+      }
+    }
+  }
 </style>
 
 <script lang="ts">

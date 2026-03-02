@@ -1,9 +1,10 @@
 <template>
   <div class="connect">
     <div class="window">
-      <div class="logo" title="About n.eko" @click.stop.prevent="about">
-        <img src="@/assets/images/logo.svg" alt="n.eko" />
-        <span><b>n</b>.eko</span>
+      <div class="logo" title="About NINJABR.CLOUD" @click.stop.prevent="about">
+        <span class="logo-brand">
+          <span class="ninja">NINJABR</span><span class="cloud">.CLOUD</span>
+        </span>
       </div>
       <form class="message" v-if="!connecting" @submit.stop.prevent="connect">
         <span v-if="!autoPassword">{{ $t('connect.login_title') }}</span>
