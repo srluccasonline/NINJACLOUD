@@ -13,6 +13,7 @@ import * as tw from './zh-tw'
 import * as ja from './ja-jp'
 import * as id from './id-id'
 import * as pl from './pl-pl'
+import * as pt from './pt-br'
 
 export const messages = {
   en,
@@ -30,4 +31,5 @@ export const messages = {
   ja,
   id,
   pl,
+  pt,
 }
