@@ -1,0 +1,20 @@
+# Dockerfile de Produção para NINJABR.CLOUD
+# Este Dockerfile constrói o frontend modificado e o injeta na imagem oficial do Neko.
+
+# Estágio 1: Build do Frontend (Node.js)
+FROM node:18-bullseye-slim AS frontend-builder
+WORKDIR /src
+COPY client/package*.json ./
+RUN npm install
+COPY client/ .
+RUN npm run build
+
+# Estágio 2: Imagem Final (Baseada na oficial com Firefox)
+FROM ghcr.io/m1k1o/neko/firefox:latest
+
+# Substitui o frontend oficial pelo nosso personalizado
+COPY --from=frontend-builder /src/dist/ /var/www
+
+# Mantém as configurações e permissões originais do Neko
+EXPOSE 8080
+EXPOSE 52000-52100/udp

@@ -1,0 +1,19 @@
+services:
+  neko:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    container_name: ninjabr-cloud
+    restart: unless-stopped
+    shm_size: "3gb"
+    ports:
+      - "80:8080"
+      - "52000-52100:52000-52100/udp"
+    environment:
+      NEKO_DESKTOP_SCREEN: 1920x1080@30
+      NEKO_MEMBER_MULTIUSER_USER_PASSWORD: ninja
+      NEKO_MEMBER_MULTIUSER_ADMIN_PASSWORD: admin
+      NEKO_WEBRTC_EPR: 52000-52100
+      NEKO_WEBRTC_ICELITE: 1
+      # IP da sua VPS:
+      NEKO_NAT1TO1: 104.237.2.124
