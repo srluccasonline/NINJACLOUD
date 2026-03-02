@@ -44,23 +44,6 @@
           <span />
         </label>
       </li>
-      <li class="broadcast" v-if="admin">
-        <div>
-          <span>{{ $t('setting.broadcast_title') }}</span>
-          <button v-if="!broadcast_is_active" @click.stop.prevent="$accessor.settings.broadcastCreate(broadcast_url)">
-            <i class="fas fa-play"></i>
-          </button>
-          <button v-else @click.stop.prevent="$accessor.settings.broadcastDestroy()" class="btn-red">
-            <i class="fas fa-stop"></i>
-          </button>
-        </div>
-        <input
-          v-model="broadcast_url"
-          :disabled="broadcast_is_active"
-          class="input"
-          placeholder="rtmp://a.rtmp.youtube.com/live2/<stream-key>"
-        />
-      </li>
       <li v-if="connected">
         <button @click.stop.prevent="logout">{{ $t('logout') }}</button>
       </li>
@@ -271,33 +254,6 @@
           }
         }
 
-        &.broadcast {
-          display: flex;
-          flex-direction: column;
-
-          div {
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-
-            button {
-              flex-shrink: 1;
-              width: auto !important;
-              margin: 0;
-              padding: 0 10px;
-
-              &.btn-red {
-                background: #a62626;
-              }
-            }
-          }
-
-          .input {
-            text-align: left;
-            width: auto !important;
-            margin: 0;
-          }
-        }
       }
     }
   }
@@ -308,7 +264,6 @@
 
   @Component({ name: 'neko-settings' })
   export default class extends Vue {
-    private broadcast_url: string = ''
 
     get admin() {
       return this.$accessor.user.admin
@@ -364,19 +319,6 @@
 
     get keyboard_layout() {
       return this.$accessor.settings.keyboard_layout
-    }
-
-    get broadcast_is_active() {
-      return this.$accessor.settings.broadcast_is_active
-    }
-
-    get broadcast_url_remote() {
-      return this.$accessor.settings.broadcast_url
-    }
-
-    @Watch('broadcast_url_remote', { immediate: true })
-    onBroadcastUrlChange() {
-      this.broadcast_url = this.broadcast_url_remote
     }
 
     set keyboard_layout(value: string) {
